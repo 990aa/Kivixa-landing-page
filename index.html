@@ -1,0 +1,1017 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f7fb" />
+
+    <title>Kivixa — Privacy-first productivity workspace with on-device AI</title>
+    <meta
+      name="description"
+      content="A local-first, cross-platform workspace for notes, sketching, planning, and private AI assistance. Your data never leaves your device."
+    />
+    <meta property="og:title" content="Kivixa — Privacy-first productivity workspace" />
+    <meta
+      property="og:description"
+      content="Notes, sketching, planning, and on-device AI — all local, all private, all yours."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/icon.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="assets/icon.svg" />
+    <link rel="alternate icon" type="image/png" href="assets/icon.png" />
+    <link rel="apple-touch-icon" href="assets/icon.png" />
+
+    <script>
+      document.documentElement.classList.add("js");
+    </script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="ambient" aria-hidden="true">
+      <span class="blob blob-a"></span>
+      <span class="blob blob-b"></span>
+      <span class="blob blob-c"></span>
+      <span class="blob blob-d"></span>
+      <span class="grain"></span>
+    </div>
+
+    <div class="scroll-progress" aria-hidden="true"><span></span></div>
+
+    <!-- ============================ HEADER ============================ -->
+    <header class="site-header" data-header>
+      <div class="container header-inner">
+        <a class="brand" href="#top" aria-label="Kivixa home">
+          <img src="assets/icon.svg" alt="" width="26" height="26" class="brand-mark" />
+          <span class="brand-name">Kivixa</span>
+          <span class="pill pill-accent brand-pill">Beta</span>
+        </a>
+
+        <nav class="nav" aria-label="Primary">
+          <a href="#features" data-nav>Features</a>
+          <a href="#ai" data-nav>AI</a>
+          <a href="#toolkit" data-nav>Toolkit</a>
+          <a href="#privacy" data-nav>Privacy</a>
+          <a href="#download" data-nav>Download</a>
+          <a href="#faq" data-nav>FAQ</a>
+        </nav>
+
+        <div class="header-actions">
+          <a
+            class="btn btn-ghost"
+            href="https://github.com/990aa/kivixa"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M12 2C6.48 2 2 6.58 2 12.23c0 4.51 2.87 8.34 6.84 9.69.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.24 10.24 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z"
+              />
+            </svg>
+            <span>GitHub</span>
+          </a>
+          <a class="btn btn-primary header-cta" href="#download">Download</a>
+
+          <button
+            class="menu-toggle"
+            type="button"
+            aria-expanded="false"
+            aria-controls="mobile-menu"
+            aria-label="Open menu"
+            data-menu-toggle
+          >
+            <span></span><span></span>
+          </button>
+        </div>
+      </div>
+
+      <div class="mobile-menu" id="mobile-menu" data-mobile-menu hidden>
+        <nav aria-label="Mobile">
+          <a href="#features">Features</a>
+          <a href="#ai">On-device AI</a>
+          <a href="#toolkit">Toolkit</a>
+          <a href="#privacy">Privacy</a>
+          <a href="#download">Download</a>
+          <a href="#faq">FAQ</a>
+          <a href="https://github.com/990aa/kivixa" target="_blank" rel="noopener noreferrer"
+            >GitHub ↗</a
+          >
+        </nav>
+      </div>
+    </header>
+
+    <main id="top">
+      <!-- ============================ HERO ============================ -->
+      <section class="hero" id="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <span class="pill pill-glass" data-reveal>
+              <span class="dot-accent"></span>
+              v0.9.0 · On-device AI workspace
+            </span>
+
+            <h1 class="hero-title" data-reveal style="--d: 80ms">
+              Your private workspace.
+              <span class="hero-title-muted">Entirely on&#8209;device.</span>
+            </h1>
+
+            <p class="hero-sub" data-reveal style="--d: 160ms">
+              Kivixa is a notes, sketching, planning, and AI workspace that runs entirely on your
+              hardware. No cloud sync. No accounts. Nothing leaves your device.
+            </p>
+
+            <div class="hero-actions" data-reveal style="--d: 240ms">
+              <a class="btn btn-primary btn-lg" href="#download">
+                Download for your device
+                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M5 12h14M13 6l6 6-6 6" />
+                </svg>
+              </a>
+              <a
+                class="btn btn-ghost btn-lg"
+                href="https://github.com/990aa/kivixa"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                  <path
+                    d="M12 2C6.48 2 2 6.58 2 12.23c0 4.51 2.87 8.34 6.84 9.69.5.1.68-.22.68-.49v-1.7c-2.78.62-3.37-1.37-3.37-1.37-.46-1.18-1.11-1.5-1.11-1.5-.91-.64.07-.62.07-.62 1 .07 1.53 1.06 1.53 1.06.9 1.57 2.35 1.12 2.92.86.09-.67.35-1.12.63-1.38-2.22-.26-4.56-1.14-4.56-5.07 0-1.12.39-2.04 1.03-2.76-.1-.26-.45-1.3.1-2.71 0 0 .84-.28 2.75 1.05a9.3 9.3 0 0 1 5 0c1.91-1.33 2.75-1.05 2.75-1.05.55 1.41.2 2.45.1 2.71.64.72 1.03 1.64 1.03 2.76 0 3.94-2.34 4.8-4.57 5.06.36.32.68.94.68 1.9v2.82c0 .27.18.6.69.49A10.24 10.24 0 0 0 22 12.23C22 6.58 17.52 2 12 2Z"
+                  />
+                </svg>
+                View on GitHub
+              </a>
+            </div>
+
+            <p class="hero-meta" data-reveal style="--d: 320ms">
+              Free · MIT licensed · Windows · Android · macOS · Linux · iOS
+            </p>
+            <p class="hero-pronounce" data-reveal style="--d: 380ms">
+              Pronounced <em>kee-VEE-ha</em>
+              <span class="ipa">/kiˈviːhɑː/</span>
+            </p>
+          </div>
+
+          <!-- Floating glass workspace preview -->
+          <div class="hero-visual" data-reveal style="--d: 300ms" aria-hidden="true">
+            <div class="mock glass mock-main float-slow">
+              <div class="mock-bar">
+                <span class="mock-dot"></span><span class="mock-dot"></span
+                ><span class="mock-dot"></span>
+                <span class="mock-path">notes / focus-rituals.kvx</span>
+              </div>
+              <div class="mock-body">
+                <div class="mock-rail">
+                  <span class="rail-item is-active"></span>
+                  <span class="rail-item"></span>
+                  <span class="rail-item"></span>
+                  <span class="rail-item"></span>
+                  <span class="rail-item"></span>
+                </div>
+                <div class="mock-doc">
+                  <h3>Morning deep work</h3>
+                  <span class="skel w92"></span>
+                  <span class="skel w78"></span>
+                  <span class="skel w85"></span>
+                  <span class="skel w60"></span>
+                  <div class="mock-tags">
+                    <span class="tag">Coding</span>
+                    <span class="tag tag-ghost">90 / 20</span>
+                    <span class="tag tag-ghost">Life Git ✓</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div class="mock glass mock-ai float-fast">
+              <div class="mock-ai-head">
+                <span class="pulse"></span> On-device AI · Phi-4 Mini
+              </div>
+              <p class="bubble">Summarize yesterday's notes and plan three tasks.</p>
+              <p class="bubble bubble-reply">
+                Done — 3 tasks added to <strong>Today</strong>. 0 bytes left this device.
+              </p>
+            </div>
+
+            <div class="mock glass mock-timer float-mid">
+              <svg viewBox="0 0 36 36" class="ring">
+                <circle cx="18" cy="18" r="15" class="ring-track" />
+                <circle cx="18" cy="18" r="15" class="ring-value" />
+              </svg>
+              <div>
+                <b>25:00</b>
+                <span>Focus · Pomodoro</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ======================== PLATFORM STRIP ======================== -->
+      <section class="strip">
+        <div class="container">
+          <p class="strip-label" data-reveal>Runs natively on every platform</p>
+          <ul class="strip-list" data-reveal style="--d: 80ms">
+            <li>Windows</li>
+            <li>Android</li>
+            <li>macOS</li>
+            <li>Linux</li>
+            <li>iOS</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- =========================== FEATURES =========================== -->
+      <section class="section" id="features">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <p class="overline">Everything local</p>
+            <h2>One workspace. <em>The full toolkit.</em></h2>
+            <p class="section-sub">
+              Notes, sketches, planning, AI, timers, scripting — all in a single app that respects
+              your machine and your privacy.
+            </p>
+          </header>
+
+          <ul class="card-grid">
+            <li class="card glass" data-reveal style="--d: 0ms" data-tilt>
+              <div class="card-top">
+                <span class="icon-chip">
+                  <svg viewBox="0 0 24 24" class="ico">
+                    <path
+                      d="M12 4a3 3 0 0 0-3 3 3 3 0 0 0-1 5.8V17a3 3 0 0 0 4 2.8A3 3 0 0 0 16 17v-4.2A3 3 0 0 0 15 7a3 3 0 0 0-3-3Z"
+                    />
+                    <path d="M12 4v16M8 10h1M15 14h1" />
+                  </svg>
+                </span>
+                <span class="pill pill-accent">17 models</span>
+              </div>
+              <h3>On-device AI</h3>
+              <p>
+                Run Phi-4, Qwen3.5, Llama 3.2, Gemma 4 and 13 other models entirely on your
+                hardware. No API keys. No internet after download. Full reasoning, writing and tool
+                use — offline.
+              </p>
+            </li>
+
+            <li class="card glass" data-reveal style="--d: 70ms" data-tilt>
+              <div class="card-top">
+                <span class="icon-chip">
+                  <svg viewBox="0 0 24 24" class="ico">
+                    <path d="M4 10v4M8 6v12M12 3v18M16 7v10M20 10v4" />
+                  </svg>
+                </span>
+                <span class="pill pill-accent">Fully offline</span>
+              </div>
+              <h3>Audio intelligence</h3>
+              <p>
+                Whisper-powered speech-to-text, Kokoro neural TTS, voice notes with karaoke
+                transcription, and a hands-free AI walkie-talkie — all running locally.
+              </p>
+            </li>
+
+            <li class="card glass" data-reveal style="--d: 140ms" data-tilt>
+              <div class="card-top">
+                <span class="icon-chip">
+                  <svg viewBox="0 0 24 24" class="ico">
+                    <path d="M5 4h11l4 4v12H5z" />
+                    <path d="M16 4v4h4M8 13h8M8 17h5" />
+                  </svg>
+                </span>
+                <span class="pill pill-accent">+ PDF support</span>
+              </div>
+              <h3>Rich note-taking</h3>
+              <p>
+                Markdown editor, handwriting canvas, floating text boxes, bidirectional note
+                linking, image and video embedding, and Life Git — automatic version control for
+                every note.
+              </p>
+            </li>
+
+            <li class="card glass" data-reveal style="--d: 0ms" data-tilt>
+              <div class="card-top">
+                <span class="icon-chip">
+                  <svg viewBox="0 0 24 24" class="ico">
+                    <circle cx="6" cy="7" r="2.4" />
+                    <circle cx="18" cy="6" r="2.4" />
+                    <circle cx="12" cy="17" r="2.4" />
+                    <path d="M8 8.4l2.6 6.6M15.8 7.7l-2.6 7M8.2 6.6l7.4-.4" />
+                  </svg>
+                </span>
+                <span class="pill pill-accent">Interactive</span>
+              </div>
+              <h3>Knowledge graph</h3>
+              <p>
+                Build visual mind maps with hub, note and idea nodes. Connect them with labelled
+                arrows, pan and zoom freely, and link graph nodes directly to your notes.
+              </p>
+            </li>
+
+            <li class="card glass" data-reveal style="--d: 70ms" data-tilt>
+              <div class="card-top">
+                <span class="icon-chip">
+                  <svg viewBox="0 0 24 24" class="ico">
+                    <circle cx="12" cy="13" r="8" />
+                    <path d="M12 9v4l2.5 2M9 2h6" />
+                  </svg>
+                </span>
+                <span class="pill pill-accent">Built-in</span>
+              </div>
+              <h3>Productivity suite</h3>
+              <p>
+                Pomodoro, 52/17, Ultradian timers. Chained routines. Multi-timer orchestration.
+                Project manager with task tracking. Calendar with recurring events and reminders.
+              </p>
+            </li>
+
+            <li class="card glass" data-reveal style="--d: 140ms" data-tilt>
+              <div class="card-top">
+                <span class="icon-chip">
+                  <svg viewBox="0 0 24 24" class="ico">
+                    <rect x="3" y="4" width="18" height="16" rx="3" />
+                    <path d="M7.5 10l2.5 2-2.5 2M12.5 14h4" />
+                  </svg>
+                </span>
+                <span class="pill pill-accent">Lua 5.3</span>
+              </div>
+              <h3>Scriptable &amp; extensible</h3>
+              <p>
+                Lua plugin system with a full App API — create, read, move and search notes
+                programmatically. MCP tool execution lets the AI perform file operations on your
+                behalf.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============================== AI ============================== -->
+      <section class="section section-alt" id="ai">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <p class="overline">On-device AI</p>
+            <h2>17 models. Zero cloud. <em>All yours.</em></h2>
+            <p class="section-sub">
+              Load any of these open-weight models and run them locally. After download, Kivixa
+              works without a network — even fully offline.
+            </p>
+          </header>
+
+          <div class="ai-layout">
+            <div class="registry glass" data-reveal>
+              <div class="registry-head">
+                <span class="mock-dot"></span><span class="mock-dot"></span
+                ><span class="mock-dot"></span>
+                <span class="registry-path">kivixa-models://local-registry</span>
+              </div>
+              <ul class="registry-list">
+                <li><span class="ok">✓</span><span class="m-name">Phi-4 Mini</span><span class="m-tag">Reasoning</span></li>
+                <li><span class="ok">✓</span><span class="m-name">Phi-4 Mini Reasoning</span><span class="m-tag">Reasoning</span></li>
+                <li><span class="ok">✓</span><span class="m-name">Qwen 2.5 3B</span><span class="m-tag">Writing</span></li>
+                <li><span class="ok">✓</span><span class="m-name">Llama 3.2 3B Instruct</span><span class="m-tag">Chat</span></li>
+                <li><span class="ok">✓</span><span class="m-name">Qwen2.5 1.5B Instruct</span><span class="m-tag">Efficiency</span></li>
+                <li><span class="ok">✓</span><span class="m-name">Qwen3.5 4B Distilled</span><span class="m-tag">Reasoning+</span></li>
+                <li><span class="ok">✓</span><span class="m-name">Qwen3.5 2B Distilled</span><span class="m-tag">Balanced</span></li>
+                <li><span class="ok">✓</span><span class="m-name">Qwen3.5 0.8B Distilled</span><span class="m-tag">Fast</span></li>
+                <li><span class="ok">✓</span><span class="m-name">DeepSeek R1 Distill Qwen 1.5B</span><span class="m-tag">Math / Code</span></li>
+                <li><span class="ok">✓</span><span class="m-name">SmolLM2 1.7B Instruct</span><span class="m-tag">Compact</span></li>
+                <li><span class="ok">✓</span><span class="m-name">SmolLM3 3B</span><span class="m-tag">General</span></li>
+                <li><span class="ok">✓</span><span class="m-name">SmolVLM2 500M Video Instruct</span><span class="m-tag">Vision</span></li>
+                <li><span class="ok">✓</span><span class="m-name">Function Gemma 270M</span><span class="m-tag">Tool use</span></li>
+                <li><span class="ok">✓</span><span class="m-name">Gemma 2B</span><span class="m-tag">General</span></li>
+                <li><span class="ok">✓</span><span class="m-name">Gemma 3 4B IT</span><span class="m-tag">Quality</span></li>
+                <li><span class="ok">✓</span><span class="m-name">Gemma 4 E2B IT</span><span class="m-tag">Quality+</span></li>
+                <li><span class="ok">✓</span><span class="m-name">TranslateGemma 4B IT</span><span class="m-tag">Translate</span></li>
+              </ul>
+              <div class="registry-foot">
+                ✓ 17 models loaded · 0 bytes sent to cloud · GPU: Vulkan / Metal
+              </div>
+            </div>
+
+            <div class="ai-notes">
+              <article class="note glass" data-reveal style="--d: 60ms">
+                <h3>Model Context Protocol (MCP)</h3>
+                <ul class="ticks">
+                  <li>AI-powered tool execution — let AI perform actions on your behalf</li>
+                  <li>File operations: read, write, delete; create folders</li>
+                  <li>Directory listing and markdown export</li>
+                  <li>Lua scripting integration for calendar and timer scripts</li>
+                  <li>Safety first — every execution needs your confirmation</li>
+                  <li>Sandboxed: file access restricted to your notes folder</li>
+                </ul>
+              </article>
+
+              <article class="note glass" data-reveal style="--d: 120ms">
+                <h3>Smart Model Manager</h3>
+                <ul class="ticks">
+                  <li>Automatic download with resume support</li>
+                  <li>Background downloading while the app is minimized</li>
+                  <li>Progress tracking with speed and ETA display</li>
+                  <li>GPU acceleration via Vulkan and Metal</li>
+                </ul>
+              </article>
+            </div>
+          </div>
+
+          <ul class="mini-grid">
+            <li class="mini glass" data-reveal style="--d: 0ms">
+              <h3>Audio intelligence</h3>
+              <p>
+                Whisper-based offline speech-to-text, Kokoro neural TTS, voice activity detection,
+                a neural dictation bar, voice notes with karaoke transcript highlighting, voice
+                search, and an AI walkie-talkie — fully offline.
+              </p>
+            </li>
+            <li class="mini glass" data-reveal style="--d: 70ms">
+              <h3>Knowledge graph visualization</h3>
+              <p>
+                Interactive mind mapping with hub, note and idea nodes, six shapes, eight colours,
+                labelled links with arrows, note-linked nodes, and persistent storage.
+              </p>
+            </li>
+            <li class="mini glass" data-reveal style="--d: 140ms">
+              <h3>Vector database</h3>
+              <p>
+                Local vector embeddings for all your notes, lightning-fast similarity search,
+                automatic clustering of related content, and a persistent cache for instant
+                startup.
+              </p>
+            </li>
+            <li class="mini glass" data-reveal style="--d: 210ms">
+              <h3>AI-powered features</h3>
+              <p>
+                Semantic search, auto-categorization, smart summaries, question answering, title
+                suggestions, MCP chat mode, prompt history navigation and an attachment-aware
+                composer.
+              </p>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============================ TOOLKIT ============================ -->
+      <section class="section" id="toolkit">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <p class="overline">Beyond the basics</p>
+            <h2>A workspace that <em>keeps up</em> with you.</h2>
+            <p class="section-sub">
+              Version-controlled notes, a scriptable plugin layer, timers, math, canvases and a
+              built-in browser — no extensions to hunt for.
+            </p>
+          </header>
+
+          <div class="bento">
+            <article class="bento-card glass span-3" data-reveal data-tilt>
+              <span class="icon-chip">
+                <svg viewBox="0 0 24 24" class="ico">
+                  <path d="M5 4h11l4 4v12H5z" /><path d="M16 4v4h4M8 13h8M8 17h5" />
+                </svg>
+              </span>
+              <h3>Notes &amp; documents</h3>
+              <p>
+                A rich markdown editor powered by AppFlowy Editor — bold, lists, checkboxes, quotes,
+                code blocks, hyperlinks and real-time autosave. Floating text boxes anywhere on the
+                canvas, folder organization, <code>.kvx</code> / <code>.md</code> / <code>.txt</code>
+                and PDF support, bidirectional note linking, plus image and video embedding with
+                resize, rotate and comment annotations.
+              </p>
+            </article>
+
+            <article class="bento-card glass span-3" data-reveal style="--d: 70ms" data-tilt>
+              <span class="icon-chip">
+                <svg viewBox="0 0 24 24" class="ico">
+                  <circle cx="12" cy="12" r="8.5" /><path d="M12 7.5V12l3 2" />
+                </svg>
+              </span>
+              <h3>Life Git version control</h3>
+              <p>
+                Time travel — roll back any note to any previous version with a slider.
+                Auto-snapshots when you stop typing, content-addressable SHA-256 storage, commit
+                history with timestamps, per-file history and version comparison before restoring.
+                Zero configuration.
+              </p>
+            </article>
+
+            <article class="bento-card glass span-2" data-reveal data-tilt>
+              <span class="icon-chip">
+                <svg viewBox="0 0 24 24" class="ico">
+                  <rect x="3" y="4" width="18" height="16" rx="3" />
+                  <path d="M7.5 10l2.5 2-2.5 2M12.5 14h4" />
+                </svg>
+              </span>
+              <h3>Scriptable plugins</h3>
+              <p>
+                Lua 5.3 scripting with a full App API — <code>App:createNote</code>,
+                <code>App:readNote</code>, <code>App:findNotes</code> and more. Example plugins
+                included, a plugin manager and an ad-hoc script runner.
+              </p>
+            </article>
+
+            <article class="bento-card glass span-2" data-reveal style="--d: 70ms" data-tilt>
+              <span class="icon-chip">
+                <svg viewBox="0 0 24 24" class="ico">
+                  <circle cx="12" cy="13" r="8" /><path d="M12 9v4l2.5 2M9 2h6" />
+                </svg>
+              </span>
+              <h3>Productivity clock</h3>
+              <p>
+                Pomodoro, 52/17 and Ultradian templates, session tags, quick-switch presets,
+                multi-timer orchestration, chained routines with auto-advance, statistics, smart
+                notifications and a floating clock widget.
+              </p>
+            </article>
+
+            <article class="bento-card glass span-2" data-reveal style="--d: 140ms" data-tilt>
+              <span class="icon-chip">
+                <svg viewBox="0 0 24 24" class="ico">
+                  <rect x="4" y="3" width="16" height="18" rx="3" />
+                  <path d="M8 7h8M8 11h2M12 11h2M16 11h0M8 15h2M12 15h2M16 15h0" />
+                </svg>
+              </span>
+              <h3>Math module</h3>
+              <p>
+                A full mathematics suite on a Rust backend — scientific calculator, algebra,
+                calculus with partial derivatives and multiple integrals, statistics and hypothesis
+                testing, discrete math, plus 2D, parametric and polar graphing.
+              </p>
+            </article>
+
+            <article class="bento-card glass span-2" data-reveal data-tilt>
+              <span class="icon-chip">
+                <svg viewBox="0 0 24 24" class="ico">
+                  <path d="M4 18.5 9 13l3.5 3.5L20 7" /><path d="M15 7h5v5" />
+                </svg>
+              </span>
+              <h3>Digital canvas</h3>
+              <p>
+                Pressure-sensitive pen, highlighter, laser pointer, multi-mode eraser and shape
+                tools on an infinite canvas with layers, backgrounds, grid snapping and transform
+                tools.
+              </p>
+            </article>
+
+            <article class="bento-card glass span-2" data-reveal style="--d: 70ms" data-tilt>
+              <span class="icon-chip">
+                <svg viewBox="0 0 24 24" class="ico">
+                  <rect x="3" y="5" width="18" height="14" rx="3" /><path d="M3 9.5h18M7 7.2h.01" />
+                </svg>
+              </span>
+              <h3>In-app browser</h3>
+              <p>
+                A built-in browser with find-in-page, a developer console, dark-mode injection,
+                permission dialogs, quick links, download handoff and a floating resizable window.
+              </p>
+            </article>
+
+            <article class="bento-card glass span-2" data-reveal style="--d: 140ms" data-tilt>
+              <span class="icon-chip">
+                <svg viewBox="0 0 24 24" class="ico">
+                  <path d="M12 3.5 14.2 9l5.8.4-4.5 3.8 1.5 5.6L12 15.8 7 18.8l1.5-5.6L4 9.4 9.8 9z" />
+                </svg>
+              </span>
+              <h3>Quick notes</h3>
+              <p>
+                Ephemeral notes for thoughts that don't need permanent storage — text or
+                handwriting mode, auto-expiration from 15 minutes to one week, an expiry countdown
+                and one-tap access from the floating hub.
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================== PRIVACY =========================== -->
+      <section class="section section-alt" id="privacy">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <p class="overline">Privacy by default</p>
+            <h2>Your data never <em>leaves</em> your device.</h2>
+            <p class="section-sub">
+              No cloud sync. No accounts. No telemetry. Notes, models, vectors and history all live
+              in your local file system — yours, encrypted, offline.
+            </p>
+          </header>
+
+          <div class="privacy-grid">
+            <div class="privacy-cards">
+              <article class="card glass" data-reveal data-tilt>
+                <span class="icon-chip">
+                  <svg viewBox="0 0 24 24" class="ico">
+                    <path d="M4 7.5 12 4l8 3.5v9L12 20l-8-3.5z" /><path d="M12 12v8M4 7.5 12 11l8-3.5" />
+                  </svg>
+                </span>
+                <h3>Local storage</h3>
+                <p>Notes, models and vectors stay on your file system. Zero cloud sync, zero account.</p>
+              </article>
+
+              <article class="card glass" data-reveal style="--d: 80ms" data-tilt>
+                <span class="icon-chip">
+                  <svg viewBox="0 0 24 24" class="ico">
+                    <rect x="5" y="10.5" width="14" height="9.5" rx="2.5" />
+                    <path d="M8.5 10.5V8a3.5 3.5 0 0 1 7 0v2.5" />
+                  </svg>
+                </span>
+                <h3>Encrypted at rest</h3>
+                <p>
+                  Secure storage with platform-grade primitives. Your data is unreadable without
+                  your key.
+                </p>
+              </article>
+
+              <article class="card glass" data-reveal style="--d: 160ms" data-tilt>
+                <span class="icon-chip">
+                  <svg viewBox="0 0 24 24" class="ico">
+                    <path d="M3 12.5h4l2.5-6 4 12 2.5-6H21" />
+                  </svg>
+                </span>
+                <h3>Offline first</h3>
+                <p>
+                  Every feature works without a network. The internet is optional, never required.
+                </p>
+              </article>
+            </div>
+
+            <div class="privacy-visual" data-reveal style="--d: 200ms" aria-hidden="true">
+              <div class="lock-glass glass">
+                <svg viewBox="0 0 220 230" fill="none">
+                  <path
+                    d="M62 96V66C62 38 84 16 112 16C140 16 162 38 162 66V96"
+                    stroke="url(#shackle)"
+                    stroke-width="14"
+                    stroke-linecap="round"
+                  />
+                  <rect
+                    x="42"
+                    y="88"
+                    width="140"
+                    height="126"
+                    rx="20"
+                    fill="url(#body)"
+                    stroke="rgba(255,255,255,.55)"
+                    stroke-width="1.5"
+                  />
+                  <circle cx="112" cy="146" r="13" fill="url(#key)" />
+                  <rect x="106.5" y="156" width="11" height="30" rx="5.5" fill="url(#key)" />
+                  <defs>
+                    <linearGradient id="shackle" x1="42" y1="16" x2="182" y2="214" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#ffffff" />
+                      <stop offset="1" stop-color="#aab4cc" />
+                    </linearGradient>
+                    <linearGradient id="body" x1="42" y1="88" x2="182" y2="214" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#5f74a8" />
+                      <stop offset="1" stop-color="#2b3552" />
+                    </linearGradient>
+                    <linearGradient id="key" x1="99" y1="133" x2="125" y2="186" gradientUnits="userSpaceOnUse">
+                      <stop stop-color="#e3c88b" />
+                      <stop offset="1" stop-color="#c6a15b" />
+                    </linearGradient>
+                  </defs>
+                </svg>
+                <p class="lock-caption">AES-secure · flutter_secure_storage · no cloud dependency</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- =========================== DOWNLOAD =========================== -->
+      <section class="section" id="download">
+        <div class="container">
+          <header class="section-head" data-reveal>
+            <p class="overline">Download</p>
+            <h2>Same privacy model, <em>every platform.</em></h2>
+            <p class="section-sub">v0.9.0 · built for your device. Pick yours.</p>
+          </header>
+
+          <ul class="dl-grid">
+            <li class="card glass dl-card" data-reveal>
+              <div class="dl-head">
+                <h3>Windows</h3>
+                <span class="pill pill-success">Stable</span>
+              </div>
+              <p>winget install or download the signed .exe installer.</p>
+              <a
+                class="btn btn-primary btn-block"
+                href="https://github.com/990aa/kivixa/releases/download/v0.9.0%2B90000/Kivixa-Setup-0.9.0.exe"
+              >
+                Download .exe
+              </a>
+              <div class="code-row">
+                <code>winget install Kivixa</code>
+                <button class="copy-btn" type="button" data-copy="winget install Kivixa">
+                  Copy
+                </button>
+              </div>
+            </li>
+
+            <li class="card glass dl-card" data-reveal style="--d: 70ms">
+              <div class="dl-head">
+                <h3>Android</h3>
+                <span class="pill pill-success">Stable</span>
+              </div>
+              <p>ARM64 APK direct, or subscribe to the F-Droid repo for automatic updates.</p>
+              <a
+                class="btn btn-primary btn-block"
+                href="https://github.com/990aa/kivixa/releases/download/v0.9.0%2B90000/Kivixa-Android-0.9.0-arm64.apk"
+              >
+                Download APK
+              </a>
+              <div class="fdroid">
+                <b>Add the F-Droid repo</b>
+                <ol>
+                  <li>Install F-Droid from f-droid.org</li>
+                  <li>Open the app → Settings → Repositories</li>
+                  <li>Tap <b>+</b>, then scan the QR code or paste the URL</li>
+                </ol>
+                <div class="code-row">
+                  <code>https://990aa.github.io/kivixa/repo/</code>
+                  <button
+                    class="copy-btn"
+                    type="button"
+                    data-copy="https://990aa.github.io/kivixa/repo/"
+                  >
+                    Copy
+                  </button>
+                </div>
+                <a
+                  class="fdroid-link"
+                  href="https://990aa.github.io/kivixa/repo/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Open F-Droid repository ↗</a
+                >
+              </div>
+            </li>
+
+            <li class="card glass dl-card" data-reveal style="--d: 140ms">
+              <div class="dl-head">
+                <h3>Linux</h3>
+                <span class="pill">Distributed</span>
+              </div>
+              <p>x86_64 .tar.gz bundle. Vulkan acceleration on supported GPUs.</p>
+              <a
+                class="btn btn-primary btn-block"
+                href="https://github.com/990aa/kivixa/releases"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Download .tar.gz
+              </a>
+              <p class="dl-note">Grab it from the latest release page.</p>
+            </li>
+
+            <li class="card glass dl-card" data-reveal style="--d: 0ms">
+              <div class="dl-head">
+                <h3>macOS</h3>
+                <span class="pill">Distributed</span>
+              </div>
+              <p>Universal build for x86_64 and Apple Silicon. Notarized for Gatekeeper.</p>
+              <a
+                class="btn btn-primary btn-block"
+                href="https://github.com/990aa/kivixa/releases"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Download .zip
+              </a>
+              <p class="dl-note">Grab it from the latest release page.</p>
+            </li>
+
+            <li class="card glass dl-card" data-reveal style="--d: 70ms">
+              <div class="dl-head">
+                <h3>iOS</h3>
+                <span class="pill">Distributed</span>
+              </div>
+              <p>
+                IPA — sideload via AltStore or Sideloadly. App Store distribution blocked by Apple
+                policy.
+              </p>
+              <a
+                class="btn btn-primary btn-block"
+                href="https://github.com/990aa/kivixa/releases"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Download IPA
+              </a>
+              <p class="dl-note">Grab it from the latest release page.</p>
+            </li>
+
+            <li class="card glass dl-card dl-more" data-reveal style="--d: 140ms">
+              <div class="dl-head">
+                <h3>More builds</h3>
+                <span class="pill pill-accent">All assets</span>
+              </div>
+              <p>
+                Looking for the .msix package, ARMv7 or x86_64 Android builds? Every artifact lives
+                on the releases page — signed, versioned and checksummed.
+              </p>
+              <a
+                class="btn btn-ghost btn-block"
+                href="https://github.com/990aa/kivixa/releases"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                See all release assets
+              </a>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ============================== FAQ ============================== -->
+      <section class="section section-alt" id="faq">
+        <div class="container container-narrow">
+          <header class="section-head" data-reveal>
+            <p class="overline">Questions</p>
+            <h2>Frequently <em>asked.</em></h2>
+            <p class="section-sub">
+              If you don't see your question here, open an issue on GitHub.
+            </p>
+          </header>
+
+          <div class="faq glass" data-reveal>
+            <div class="faq-item">
+              <button class="faq-q" type="button" aria-expanded="false">
+                <span>What does on-device AI actually mean?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 9.5l6 6 6-6" />
+                </svg>
+              </button>
+              <div class="faq-a">
+                <div>
+                  <p>
+                    Every model — Phi-4, Qwen, Gemma, Llama — is downloaded once and runs locally
+                    on your CPU, GPU (Vulkan on Windows/Linux/Android, Metal on macOS) or NPU.
+                    After the first download you can disable the network entirely and the AI still
+                    works. Nothing is sent to a server.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" type="button" aria-expanded="false">
+                <span>Do I need an account?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 9.5l6 6 6-6" />
+                </svg>
+              </button>
+              <div class="faq-a">
+                <div>
+                  <p>
+                    No. Kivixa has no accounts, no logins, no telemetry. Open the app, start
+                    working. Your data is yours.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" type="button" aria-expanded="false">
+                <span>Can I bring my own models?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 9.5l6 6 6-6" />
+                </svg>
+              </button>
+              <div class="faq-a">
+                <div>
+                  <p>
+                    Yes. Drop any GGUF file into the models folder and Kivixa will pick it up. The
+                    MCP tool layer lets the model call back into your notes, calendar and timers.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" type="button" aria-expanded="false">
+                <span>How is this different from Obsidian or Notion?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 9.5l6 6 6-6" />
+                </svg>
+              </button>
+              <div class="faq-a">
+                <div>
+                  <p>
+                    Obsidian is local-only markdown. Notion is cloud-only. Kivixa is both — a
+                    local-first workspace that ships its own on-device AI, so you get semantic
+                    search, summaries and tool use without sending your notes to anyone.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+            <div class="faq-item">
+              <button class="faq-q" type="button" aria-expanded="false">
+                <span>What's the catch?</span>
+                <svg class="faq-chevron" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M6 9.5l6 6 6-6" />
+                </svg>
+              </button>
+              <div class="faq-a">
+                <div>
+                  <p>
+                    AI quality scales with hardware. A 4B parameter model wants ~6 GB of RAM; a 1B
+                    model is comfortable on phones. Everything below 3B runs fast on modest
+                    laptops. Larger models exist if you have a discrete GPU.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================== CTA ============================== -->
+      <section class="section cta-section">
+        <div class="container">
+          <div class="cta glass" data-reveal>
+            <div class="cta-copy">
+              <p class="overline">Get started</p>
+              <h2>Build your private workspace with Kivixa.</h2>
+              <p>
+                One app for notes, sketching, planning and local AI. Cross-platform, offline, and
+                entirely yours.
+              </p>
+              <div class="hero-actions">
+                <a class="btn btn-primary btn-lg" href="#download">
+                  Download v0.9.0
+                  <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M5 12h14M13 6l6 6-6 6" />
+                  </svg>
+                </a>
+                <a
+                  class="btn btn-ghost btn-lg"
+                  href="https://github.com/990aa/kivixa"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  Star on GitHub
+                </a>
+              </div>
+            </div>
+
+            <div class="cta-meta">
+              <div class="cta-links">
+                <a href="https://github.com/990aa/kivixa" target="_blank" rel="noopener noreferrer"
+                  >GitHub ↗</a
+                >
+                <a
+                  href="https://github.com/990aa/kivixa/releases"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Releases ↗</a
+                >
+                <a
+                  href="https://github.com/990aa/kivixa/blob/main/CHANGELOG.md"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Changelog ↗</a
+                >
+                <a
+                  href="https://github.com/990aa/kivixa/issues"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Issues ↗</a
+                >
+                <a
+                  href="https://github.com/990aa/kivixa/discussions"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  >Discussions ↗</a
+                >
+              </div>
+              <p class="cta-stack">Built with Flutter · Dart · Rust · llama.cpp</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- ============================ FOOTER ============================ -->
+    <footer class="site-footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <img src="assets/icon.svg" alt="" width="22" height="22" class="brand-mark" />
+          <span class="brand-name">Kivixa</span>
+          <span class="footer-tag">A privacy-first cross-platform productivity workspace for
+            notes, sketching, planning, and local AI assistance.</span>
+        </div>
+        <p class="footer-legal">© 2026 Kivixa · MIT licensed · Built with Flutter &amp; Rust</p>
+        <p class="footer-version">v0.9.0</p>
+      </div>
+    </footer>
+
+    <script src="script.js" defer></script>
+  </body>
+</html>
