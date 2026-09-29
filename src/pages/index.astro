@@ -1,0 +1,56 @@
+---
+import "@/styles/global.css";
+import { getLatestRelease } from "@/lib/github";
+import Header from "@/components/nav/Header.astro";
+import Hero from "@/components/sections/Hero.astro";
+import LogoCloud from "@/components/sections/LogoCloud.astro";
+import Features from "@/components/sections/Features.astro";
+import Models from "@/components/sections/Models.astro";
+import Privacy from "@/components/sections/Privacy.astro";
+import Downloads from "@/components/sections/Downloads.astro";
+import FAQ from "@/components/sections/FAQ.astro";
+import CTAFooter from "@/components/sections/CTAFooter.astro";
+import RevealOnScroll from "@/components/ui/RevealOnScroll.tsx";
+
+const release = await getLatestRelease();
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0a0b0d" />
+    <link rel="icon" type="image/svg+xml" href="/assets/icon.svg" />
+    <link rel="alternate icon" type="image/png" href="/assets/icon.png" />
+    <link rel="apple-touch-icon" href="/assets/icon.png" />
+
+    <title>Kivixa — Privacy-first productivity workspace with on-device AI</title>
+    <meta
+      name="description"
+      content="A local-first, cross-platform workspace for notes, sketching, planning, and private AI assistance. Your data never leaves your device."
+    />
+    <meta property="og:title" content="Kivixa — Privacy-first productivity workspace" />
+    <meta
+      property="og:description"
+      content="Notes, sketching, planning, and on-device AI — all local, all private, all yours."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/icon.png" />
+    <meta name="twitter:card" content="summary_large_image" />
+  </head>
+  <body>
+    <Header />
+    <main>
+      <Hero release={release} />
+      <LogoCloud />
+      <Features />
+      <Models />
+      <Privacy />
+      <Downloads release={release} />
+      <FAQ />
+      <CTAFooter release={release} />
+    </main>
+    <RevealOnScroll client:load />
+  </body>
+</html>

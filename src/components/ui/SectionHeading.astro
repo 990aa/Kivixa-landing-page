@@ -1,0 +1,51 @@
+---
+interface Props {
+  id?: string;
+  overline?: string;
+  heading?: string;
+  body?: string;
+  align?: "left" | "center";
+  testid?: string;
+  class?: string;
+}
+
+const {
+  id,
+  overline,
+  heading,
+  body,
+  align = "center",
+  testid,
+  class: className = "",
+} = Astro.props;
+
+const alignClass = align === "center" ? "text-center mx-auto" : "text-left";
+const hasBodySlot = Astro.slots.has("body");
+---
+
+<header class:list={["max-w-3xl", alignClass, className]}>
+  {overline && <p class="overline reveal">{overline}</p>}
+  {heading && (
+    <h2
+      class:list={[
+        "mt-4 text-3xl sm:text-4xl md:text-5xl font-semibold tracking-tight text-fg",
+        "reveal",
+      ]}
+    >
+      {heading}
+    </h2>
+  )}
+  {(body || hasBodySlot) && (
+    <p
+      class:list={[
+        "mt-5 text-base sm:text-lg leading-relaxed text-fg-muted reveal",
+        align === "center" ? "mx-auto max-w-2xl" : "max-w-2xl",
+      ]}
+    >
+      {body && <Fragment set:html={body} />}
+      <slot name="body" />
+    </p>
+  )}
+  {testid && <span data-testid={testid} class="sr-only">{testid}</span>}
+  {id && <span id={id} class="sr-only" />}
+</header>

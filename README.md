@@ -1,108 +1,65 @@
 <div align="center">
 
-<img src="public/assets/icon.png" alt="Kivixa Logo" width="120" height="120">
+<img src="public/assets/icon.svg" alt="Kivixa Logo" width="96" height="96">
 
-# Kivixa Landing Page
+# Kivixa — Landing Page
 
-**Production-grade landing page for Kivixa — a privacy-first, local-first, cross-platform productivity workspace.**
+**Production landing page for [Kivixa](https://github.com/990aa/kivixa) — a privacy-first, on-device AI workspace.**
 
-[![Next.js](https://img.shields.io/badge/Next.js-16.2-black?logo=nextdotjs)](https://nextjs.org)
-[![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-4-06B6D4?logo=tailwindcss)](https://tailwindcss.com)
+[![Astro](https://img.shields.io/badge/Astro-5-FF5D01?logo=astro)](https://astro.build)
+[![Tailwind CSS](https://img.shields.io/badge/Tailwind-4-06B6D4?logo=tailwindcss)](https://tailwindcss.com)
 [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript)](https://www.typescriptlang.org)
-[![Framer Motion](https://img.shields.io/badge/Framer%20Motion-12-0055FF?logo=framer)](https://www.framer.com/motion/)
 
 </div>
 
 ---
 
-## Overview
+## Stack
 
-This repository contains the landing page website for [Kivixa](https://github.com/990aa/kivixa). It showcases the app's features, download options, platform support, and AI capabilities.
+| Layer        | Choice                                  |
+| ------------ | --------------------------------------- |
+| Framework    | Astro 5 (islands architecture, static)  |
+| Interactivity| React 19 islands (clipboard, FAQ, menu) |
+| Styling      | Tailwind CSS v4 with CSS `@theme` tokens|
+| Type system  | TypeScript strict                       |
+| Animation    | CSS scroll-reveal + minimal Motion One  |
+| E2E          | Playwright + axe-core a11y              |
 
-The download links are **dynamically fetched** from the GitHub Releases API, so the page always reflects the latest published release — no manual updates needed.
-
-## Tech Stack
-
-| Technology       | Purpose                              |
-|-----------------|--------------------------------------|
-| Next.js 16      | App Router, ISR, SSR                 |
-| Tailwind CSS 4  | Styling via `@theme` CSS tokens      |
-| TypeScript      | Type-safe codebase throughout        |
-| Framer Motion   | Scroll-triggered animations          |
-| Playwright      | E2E tests with accessibility checks  |
-
-## Getting Started
-
-### Prerequisites
-
-- [Node.js](https://nodejs.org/) 18+
-- npm (included with Node.js)
-
-### Install & Run
+## Develop
 
 ```bash
-# Install dependencies
 bun install
-
-# Start the dev server
-bun run dev
+bun run dev          # http://localhost:4321
+bun run check        # typecheck
+bun run build        # static build → ./dist
+bun run preview      # serve ./dist
+bun run test:e2e     # Playwright smoke + axe
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the site.
+Requires Bun 1.3+ and a recent Node.js for Playwright browsers. Install Playwright browsers once with `bunx playwright install chromium`.
 
-### Build for Production
+## Dynamic release data
 
-```bash
-bun run build
-bun run start
-```
+`src/lib/github.ts` fetches the latest Kivixa release from the GitHub Releases API at build time. The version, Windows .exe, MSIX, and Android ARM64 .apk URLs all derive from it. If the API is unreachable, hardcoded fallback URLs are used so the page never breaks.
 
-## Dynamic Release Data
-
-The page fetches the latest release from the GitHub API at build time and revalidates every hour via ISR:
+## Layout
 
 ```
-GET https://api.github.com/repos/990aa/kivixa/releases/latest
+src/
+├─ components/
+│  ├─ icons/           inline SVG icons
+│  ├─ nav/             Header
+│  ├─ sections/        Hero, LogoCloud, Features, Models, Privacy, Downloads, FAQ, CTAFooter
+│  └─ ui/              SectionHeading, Disclosure, CopyButton, FDroidSteps, MobileMenu, RevealOnScroll
+├─ lib/
+│  ├─ content.ts       typed copy: features, models, pillars, platforms, faqs
+│  └─ github.ts        release fetcher
+├─ pages/
+│  ├─ index.astro
+│  └─ 404.astro
+└─ styles/global.css   Tailwind v4 entrypoint + design tokens
 ```
 
-This powers:
-- Windows `.exe` download button
-- Android ARM64 `.apk` download button
-- Version badges throughout the page
+## License
 
-If the API is unreachable, hardcoded fallback URLs are used.
-
-## Testing
-
-```bash
-# Run E2E tests (requires dev server running)
-bun run dev &
-bun run test:e2e
-```
-
-### Test Coverage
-
-| Test | What it checks |
-|------|---------------|
-| No browser errors | Page loads without console or runtime errors |
-| Renders key sections | Hero, Features, and Download sections are visible |
-| Latest GitHub version | Version shown matches GitHub API latest release |
-| Download URLs match | Hero CTA + download buttons point to correct release assets |
-| Valid download URLs | URLs match expected GitHub release pattern |
-| Accessibility | All images have alt text, passes axe-core WCAG 2 AA |
-
-## Screenshots
-
-All screenshots in `public/assets/screenshots/` are from the actual Kivixa application — no placeholders are used.
-
-## About Kivixa
-
-For full details about the Kivixa application itself (features, models, build instructions), see [KIVIXA_README.md](KIVIXA_README.md).
-
----
-
-<div align="center">
-
-Built with Next.js + Tailwind CSS · Data stays on your device
-
-</div>
+MIT. Kivixa is a separate project; see [kivixa repo](https://github.com/990aa/kivixa) for product details.

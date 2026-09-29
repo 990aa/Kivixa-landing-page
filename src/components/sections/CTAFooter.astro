@@ -1,0 +1,74 @@
+---
+import type { ReleaseData } from "@/lib/github";
+import { footerLinks, REPO_URL } from "@/lib/content";
+import IconGitHub from "@/components/icons/IconGitHub.astro";
+import IconArrowRight from "@/components/icons/IconArrowRight.astro";
+
+interface Props {
+  release: ReleaseData;
+}
+
+const { release } = Astro.props;
+---
+
+<footer data-testid="footer-section" class="border-t border-border">
+  <div class="container-page py-20">
+    <div class="grid items-start gap-10 lg:grid-cols-[1.4fr_1fr]">
+      <div class="reveal">
+        <p class="overline">Get started</p>
+        <h2 class="mt-3 text-3xl font-semibold tracking-tight text-fg sm:text-4xl">
+          Build your private workspace with Kivixa.
+        </h2>
+        <p class="mt-4 max-w-xl text-base leading-relaxed text-fg-muted">
+          One app for notes, sketching, planning and local AI. Cross-platform,
+          offline, and entirely yours.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href="#download" class="btn-primary">
+            Download v{release.version}
+            <IconArrowRight class="w-3.5 h-3.5" />
+          </a>
+          <a
+            href={REPO_URL}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="btn-secondary"
+          >
+            <IconGitHub class="w-4 h-4" />
+            Star on GitHub
+          </a>
+        </div>
+      </div>
+
+      <nav
+        class="reveal grid grid-cols-2 gap-x-6 gap-y-2 text-sm"
+        aria-label="Footer"
+        style="transition-delay: 120ms;"
+      >
+        {
+          footerLinks.map((link) => (
+            <a
+              href={link.href}
+              class="text-fg-muted hover:text-fg"
+              target={link.href.startsWith("http") ? "_blank" : undefined}
+              rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+            >
+              {link.label}
+            </a>
+          ))
+        }
+      </nav>
+    </div>
+  </div>
+
+  <div class="border-t border-border">
+    <div class="container-page flex flex-col items-center justify-between gap-3 py-6 text-xs text-fg-dim sm:flex-row">
+      <p>
+        © 2026 Kivixa · MIT licensed · Built with Flutter &amp; Rust
+      </p>
+      <p class="font-mono" data-testid="footer-version">
+        v{release.version}
+      </p>
+    </div>
+  </div>
+</footer>

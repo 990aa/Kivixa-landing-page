@@ -4,21 +4,22 @@ export default defineConfig({
   testDir: "./tests/e2e",
   fullyParallel: true,
   reporter: "list",
+  timeout: 60_000,
+  expect: { timeout: 5_000 },
   webServer: {
-    command: "npm run dev",
-    url: "http://localhost:3000",
-    timeout: 120 * 1000,
+    command: "bun run preview",
+    url: "http://localhost:4321",
+    timeout: 120_000,
     reuseExistingServer: !process.env.CI,
+    stdout: "ignore",
+    stderr: "pipe",
   },
   use: {
-    baseURL: process.env.PLAYWRIGHT_BASE_URL ?? "http://localhost:3000",
+    baseURL: "http://localhost:4321",
     trace: "retain-on-failure",
     headless: true,
   },
   projects: [
-    {
-      name: "chromium",
-      use: { ...devices["Desktop Chrome"] },
-    },
+    { name: "chromium", use: { ...devices["Desktop Chrome"], channel: "chrome" } },
   ],
 });
