@@ -12,6 +12,30 @@
   var reducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
   /* ---------------------------------------------------------------
+     0. Release metadata
+     --------------------------------------------------------------- */
+  var release = window.KivixaRelease;
+  var releaseVersion = release && release.version;
+  var releaseTag = release && release.tag;
+
+  if (releaseVersion && releaseTag) {
+    Array.prototype.slice.call(document.querySelectorAll("[data-release-version]")).forEach(
+      function (element) {
+        element.textContent = "v" + releaseVersion;
+      }
+    );
+
+    var releaseBaseUrl =
+      "https://github.com/990aa/Kivixa/releases/download/" + encodeURIComponent(releaseTag) + "/";
+    Array.prototype.slice.call(document.querySelectorAll("[data-release-asset]")).forEach(
+      function (link) {
+        var asset = link.getAttribute("data-release-asset").replace("{version}", releaseVersion);
+        link.href = releaseBaseUrl + encodeURIComponent(asset);
+      }
+    );
+  }
+
+  /* ---------------------------------------------------------------
      1. Scroll progress + frosted header state
      --------------------------------------------------------------- */
   var header = document.querySelector("[data-header]");

@@ -116,7 +116,7 @@
           <div class="hero-copy">
             <span class="pill pill-glass" data-reveal>
               <span class="dot-accent"></span>
-              v0.9.0 · On-device AI workspace
+              <span data-release-version></span> · On-device AI workspace
             </span>
 
             <h1 class="hero-title" data-reveal style="--d: 80ms">
@@ -689,7 +689,7 @@
           <header class="section-head" data-reveal>
             <p class="overline">Download</p>
             <h2>Same privacy model, <em>every platform.</em></h2>
-            <p class="section-sub">v0.9.0 · built for your device. Pick yours.</p>
+            <p class="section-sub"><span data-release-version></span> · built for your device. Pick yours.</p>
           </header>
 
           <ul class="dl-grid">
@@ -701,7 +701,8 @@
               <p>winget install or download the signed .exe installer.</p>
               <a
                 class="btn btn-primary btn-block"
-                href="https://github.com/990aa/Kivixa/releases/download/v0.9.0%2B90000/Kivixa-Setup-0.9.0.exe"
+                href="https://github.com/990aa/Kivixa/releases"
+                data-release-asset="Kivixa-Setup-{version}.exe"
               >
                 Download .exe
               </a>
@@ -721,7 +722,8 @@
               <p>ARM64 APK direct, or subscribe to the F-Droid repo for automatic updates.</p>
               <a
                 class="btn btn-primary btn-block"
-                href="https://github.com/990aa/Kivixa/releases/download/v0.9.0%2B90000/Kivixa-Android-0.9.0-arm64.apk"
+                href="https://github.com/990aa/Kivixa/releases"
+                data-release-asset="Kivixa-Android-{version}-arm64.apk"
               >
                 Download APK
               </a>
@@ -945,7 +947,7 @@
               </p>
               <div class="hero-actions">
                 <a class="btn btn-primary btn-lg" href="#download">
-                  Download v0.9.0
+                  Download <span data-release-version></span>
                   <svg class="ico" viewBox="0 0 24 24" aria-hidden="true">
                     <path d="M5 12h14M13 6l6 6-6 6" />
                   </svg>
@@ -1008,10 +1010,11 @@
             notes, sketching, planning, and local AI assistance.</span>
         </div>
         <p class="footer-legal">© 2026 Kivixa · MIT licensed · Built with Flutter &amp; Rust</p>
-        <p class="footer-version">v0.9.0</p>
+        <p class="footer-version"><span data-release-version></span></p>
       </div>
     </footer>
 
+    <script src="version.js" defer></script>
     <script src="script.js" defer></script>
   </body>
 </html>
